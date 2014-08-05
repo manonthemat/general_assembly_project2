@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
  
-  get 'users/new'
-  get '/users'
-  root 'static_pages#home'
-  match '/signup', to: 'user#new',  via: 'get'
+  root 'users#index'
+
+  get 'users/'    => 'users#index'
+  get 'users/new' => 'users#new',  as: :new_user
+  get 'users/:id' => 'users#show', as: :user
+  post 'users/'    => 'users#create' 
+  get  'users/:id/edit' => 'users#edit', as: :edit_user
+  patch 'users/:id' => 'users#update'
+  delete 'users/:id' => 'users#destroy'
+
+  # root 'static_pages#home'
+  # match '/signup', to: 'user#new',  via: 'get'
   match '/home',  to: 'static_pages#home',  via: 'get'
   match '/help',  to: 'static_pages#help', via: 'get'
   match '/about', to: 'static_pages#about', via: 'get'

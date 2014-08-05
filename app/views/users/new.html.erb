@@ -1,1 +1,13 @@
 <%= provide(:title, 'Sign up') %>
+
+<%= form_for @user do |f| %>
+	Name: <%= f.text_field :name,
+	placeholder: "Name" %>
+	<%= f.text_field :email, 
+	placeholder: "email" %>
+
+	<%= f.submit "Add User" %>
+	<% end %>
+
+
+	<%= link_to "Go back to Users", users_path %>

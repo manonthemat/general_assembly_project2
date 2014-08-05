@@ -1,0 +1,10 @@
+<%= form_for @user do |f| %>
+	Name: <%= f.text_field :name,
+	placeholder: "Name" %>
+	<%= f.text_field :email, 
+	placeholder: "Email" %>
+
+	<%= f.submit "Add User" %>
+	<% end %>
+
+<%= link_to "Back to the list!", users_path %>

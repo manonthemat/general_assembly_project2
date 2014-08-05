@@ -12,10 +12,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+    # you do not need the at because its not rendered
   def create
     @user = User.new(params.require(:user).permit(:name, :email))
     if @user.save
-      redirect_to #need to put path here
+      redirect_to users_path
     else 
       render 'new'
     end
@@ -23,13 +24,12 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params.require(:user).permit(:name, :email))
-      redirect_to #need to path here
+      redirect_to users_path
     else
       render 'edit'
     end
@@ -38,6 +38,6 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to #need to put path here
+    redirect_to users_path
   end
 end
