@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
 
 
-  root 'users#index'
   get 'shoes/new' => 'shoes#new',  as: :new_shoe
   get 'shoes/:id' => 'shoes#show', as: :shoe
   post 'shoes/'    => 'shoes#create' 
