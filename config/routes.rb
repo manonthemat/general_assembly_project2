@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
 
-  root 'shoes#index'
+
+  root 'users#index'
   get 'shoes/new' => 'shoes#new',  as: :new_shoe
   get 'shoes/:id' => 'shoes#show', as: :shoe
   post 'shoes/'    => 'shoes#create' 
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
   delete 'images/:id' => 'images#destroy'
  resources :images
 
+  get 'users/:id/reactivate' => 'users#reactivate', as: :reactivate_user
   get 'users/'    => 'users#index'
   get 'users/new' => 'users#new',  as: :new_user
   get 'users/:id' => 'users#show', as: :user

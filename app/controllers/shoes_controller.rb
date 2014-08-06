@@ -42,49 +42,49 @@ class ShoesController < ApplicationController
  #  end
 
 
-  def index
-    base_url = "http://www.kicksonfire.com"
-    list_url = "#{base_url}/rare-kicks/" 
-    doc = Nokogiri::HTML(open(list_url)) 
+  # def index
+  #   base_url = "http://www.kicksonfire.com"
+  #   list_url = "#{base_url}/rare-kicks/" 
+  #   doc = Nokogiri::HTML(open(list_url)) 
 
-    x = []
+  #   x = []
 
-    l = doc.css(".entry a").map { |link| link['href'] }
-    l.each do |url|
-      if url.start_with?base_url 
-        x.push(url)
-      end
-    end
+  #   l = doc.css(".entry a").map { |link| link['href'] }
+  #   l.each do |url|
+  #     if url.start_with?base_url 
+  #       x.push(url)
+  #     end
+  #   end
  
     
-    x.each do |href| 
-      html = Nokogiri::HTML(open(href))
+  #   x.each do |href| 
+  #     html = Nokogiri::HTML(open(href))
        
 
-      detail = {}
-      td = html.css("td")
-      details = td.collect do |row|
-        [
-          [:model, td[1]],
-          [:colorway, td[3]],
-          [:stylecode, td[5]],
-          [:release_year, td[7]],
-          ].each do |name, item|
-            detail[name] = item.text
-          end
-      end
+  #     detail = {}
+  #     td = html.css("td")
+  #     details = td.collect do |row|
+  #       [
+  #         [:model, td[1]],
+  #         [:colorway, td[3]],
+  #         [:stylecode, td[5]],
+  #         [:release_year, td[7]],
+  #         ].each do |name, item|
+  #           detail[name] = item.text
+  #         end
+  #     end
 
 
       
-      title = html.css("h2").text
-      model = detail[:model]
-      colorway = detail[:colorway]
-      style_code = detail[:stylecode]
-      release_year = detail[:release_year]
-      description = html.css("p").text.gsub("Copyright © 2014 · KicksOnFire.com", "") 
-      params[:shoe] = {:title => title, :model => model, :colorway => colorway, :style_code => style_code, :release_year => release_year, :description => description}
+  #     title = html.css("h2").text
+  #     model = detail[:model]
+  #     colorway = detail[:colorway]
+  #     style_code = detail[:stylecode]
+  #     release_year = detail[:release_year]
+  #     description = html.css("p").text.gsub("Copyright © 2014 · KicksOnFire.com", "") 
+  #     params[:shoe] = {:title => title, :model => model, :colorway => colorway, :style_code => style_code, :release_year => release_year, :description => description}
         
-      @things = [title, model,]
+  #     @things = [title, model,]
 
        
 
@@ -101,6 +101,6 @@ class ShoesController < ApplicationController
       # end
 
       # @return [Mongo::GridIO]
-    end
-  end
+  #   end
+  # end
 end

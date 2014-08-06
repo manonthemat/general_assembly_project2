@@ -7,9 +7,13 @@ class SessionsController < ApplicationController
 	def create
 		u = User.where(email: params[:user][:email]).first
 		if u && u.authenticate(params[:user][:password])
+			if u.is_active== false
+				redirect_to reactivate_user_path(u.id)
+			else
 			#is login page
-			session[:user_id] = u.id.to_s
-			redirect_to decisions_path
+				session[:user_id] = u.id.to_s
+				redirect_to users_path
+			end
 		else
 			redirect_to new_session_path
 		end
@@ -17,6 +21,7 @@ class SessionsController < ApplicationController
 
 	def destroy
 		reset_session
-		redirect_to decisions_path
+		redirect_to new_session_path
+		# users_path
 	end
 end
