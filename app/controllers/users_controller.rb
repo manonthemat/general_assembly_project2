@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
     # you do not need the at because its not rendered
   def create
-    @user = User.new(params.require(:user).permit(:name, :email))
+    @user = User.new(params.require(:user).permit(:name, :email, :password, :password_confirmation))
     if @user.save
       redirect_to users_path
     else 
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(params.require(:user).permit(:name, :email))
+    if @user.update_attributes(params.require(:user).permit(:name, :email, :password, :password_confirmation))
       redirect_to users_path
     else
       render 'edit'

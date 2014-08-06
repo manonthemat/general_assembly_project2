@@ -3,7 +3,10 @@
 	placeholder: "Name" %>
 	<%= f.text_field :email, 
 	placeholder: "Email" %>
-
+	<%= f.password_field :password,
+	placeholder: "password" %>
+	<%= f.password_field :password_confirmation,
+	placeholder: "password confirmation" %>
 	<%= f.submit "Add User" %>
 	<% end %>
 

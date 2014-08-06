@@ -1,6 +1,24 @@
 Rails.application.routes.draw do
- 
-  root 'users#index'
+
+
+  resource :session, only: [:new, :create, :destroy]
+
+  root 'shoes#index'
+  get 'shoes/new' => 'shoes#new',  as: :new_shoe
+  get 'shoes/:id' => 'shoes#show', as: :shoe
+  post 'shoes/'    => 'shoes#create' 
+  get  'shoes/:id/edit' => 'shoes#edit', as: :edit_shoe
+  patch 'shoes/:id' => 'shoes#update'
+  delete 'shoes/:id' => 'shoes#destroy'
+  
+  get 'images/'    => 'images#index'
+  get 'images/new' => 'images#new',  as: :new_image
+  get 'images/:id' => 'images#show', as: :image
+  post 'images/'    => 'images#create' 
+  get  'images/:id/edit' => 'images#edit', as: :edit_image
+  patch 'images/:id' => 'images#update'
+  delete 'images/:id' => 'images#destroy'
+ resources :images
 
   get 'users/'    => 'users#index'
   get 'users/new' => 'users#new',  as: :new_user
