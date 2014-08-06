@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   get  'images/:id/edit' => 'images#edit', as: :edit_image
   patch 'images/:id' => 'images#update'
   delete 'images/:id' => 'images#destroy'
- resources :images
 
   get 'users/:id/reactivate' => 'users#reactivate', as: :reactivate_user
   get 'users/'    => 'users#index'
