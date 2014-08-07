@@ -1,39 +1,17 @@
 Rails.application.routes.draw do
 
-
   resource :session, only: [:new, :create, :destroy]
-
-
-  get 'shoes/new' => 'shoes#new',  as: :new_shoe
-  get 'shoes/:id' => 'shoes#show', as: :shoe
-  post 'shoes/'    => 'shoes#create' 
-  get  'shoes/:id/edit' => 'shoes#edit', as: :edit_shoe
-  patch 'shoes/:id' => 'shoes#update'
-  delete 'shoes/:id' => 'shoes#destroy'
-  
-  get 'images/'    => 'images#index'
-  get 'images/new' => 'images#new',  as: :new_image
-  get 'images/:id' => 'images#show', as: :image
-  post 'images/'    => 'images#create' 
-  get  'images/:id/edit' => 'images#edit', as: :edit_image
-  patch 'images/:id' => 'images#update'
-  delete 'images/:id' => 'images#destroy'
-
+  resources :shoes
+  resources :images
+  resources :users
   get 'users/:id/reactivate' => 'users#reactivate', as: :reactivate_user
-  get 'users/'    => 'users#index'
-  get 'users/new' => 'users#new',  as: :new_user
-  get 'users/:id' => 'users#show', as: :user
-  post 'users/'    => 'users#create' 
-  get  'users/:id/edit' => 'users#edit', as: :edit_user
-  patch 'users/:id' => 'users#update'
-  delete 'users/:id' => 'users#destroy'
-
-  # root 'static_pages#home'
+  
+  match '/home',    to: 'static_pages#home',      via: 'get'
+  match '/help',    to: 'static_pages#help',      via: 'get'
+  match '/about',   to: 'static_pages#about',     via: 'get'
+  match '/contact', to: 'static_pages#contact',   via: 'get'
   # match '/signup', to: 'user#new',  via: 'get'
-  match '/home',  to: 'static_pages#home',  via: 'get'
-  match '/help',  to: 'static_pages#help', via: 'get'
-  match '/about', to: 'static_pages#about', via: 'get'
-  match '/contact', to: 'static_pages#contact', via: 'get'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
