@@ -46,12 +46,17 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id]).destroy
-    @user.is_active = false
-    @user.save
+    # @user.is_active = false
+    # @user.save
 
     redirect_to users_path
   end
   def reactivate 
     @user = User.find(params[:id])
+  end
+  
+  private
+  def pic_params
+    params.require(:image).permit(:pic)
   end
 end

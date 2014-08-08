@@ -1,18 +1,12 @@
 new.html.erb
 
 <%= form_for @shoe do |f| %>
-	Name: <%= f.text_field :title,
-	placeholder: "title" %>
-	<%= f.text_field :model, 
-	placeholder: "model" %>
-	<%= f.text_field :colorway,
-	placeholder: "password" %>
-	<%= f.text_field :style_code,
-	placeholder: "style_code" %>
-	<%= f.text_field :release_year,
-	placeholder: "release_year" %>
-	<%= f.text_field :description,
-	placeholder: "description" %>
+	Name: <%= f.text_field :title, placeholder: "title" %>
+	<%= f.text_field :model, placeholder: "model" %>
+	<%= f.text_field :colorway, placeholder: "colorway" %>
+	<%= f.text_field :style_code, placeholder: "style code" %>
+	<%= f.text_field :release_year, placeholder: "release year" %>
+	<%= f.text_field :description, placeholder: "description" %>
+	<%= f.file_field :shoe_picture %>
 	<%= f.submit "Add shoe" %>
 	<% end %>
-

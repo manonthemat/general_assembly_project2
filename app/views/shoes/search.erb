@@ -1,0 +1,15 @@
+
+<h1> results </h1>
+<ul style="list-style-type: none; text-align: center">
+<% @shoes.each do |shoe| %>
+	<li><%= shoe.title %></li>
+	<li><%= shoe.description %></li>
+	<li><%= image_tag shoe.shoe_picture.url %></li>
+<% end %>
+</ul> 
+
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:search, "Search for:") %>
+  <%= text_field_tag(:search) %>
+  <%= submit_tag("Search") %>
+<% end %>

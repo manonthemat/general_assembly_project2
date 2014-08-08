@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
+  root "static_pages#home"
 
   resource :session, only: [:new, :create, :destroy]
   resources :shoes
+
+  get 'search' => 'shoes#search'
+
   resources :images
   resources :users
   get 'users/:id/reactivate' => 'users#reactivate', as: :reactivate_user
   
+
+
   match '/home',    to: 'static_pages#home',      via: 'get'
   match '/help',    to: 'static_pages#help',      via: 'get'
   match '/about',   to: 'static_pages#about',     via: 'get'

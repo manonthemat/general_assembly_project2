@@ -1,6 +1,8 @@
 <%= provide(:title, 'Sign up') %>
 
 <%= form_for @user do |f| %>
+	<%= render 'shared/error_messages' %>
+
 	Name: <%= f.text_field :name,
 	placeholder: "Name" %>
 	<%= f.text_field :email, 
@@ -14,3 +16,4 @@
 
 
 	<%= link_to "Go back to Users", users_path %>
+
