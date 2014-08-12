@@ -22,5 +22,6 @@ class Shoe
         find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
       end
     end
+    has_many :users
 end
 

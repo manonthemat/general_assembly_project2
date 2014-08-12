@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  root "static_pages#home"
+  root 'users#index'
 
   resource :session, only: [:new, :create, :destroy]
+  #resource :session, only: [:new, :create]
   resources :shoes
 
   get 'search' => 'shoes#search'
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
   get 'users/:id/reactivate' => 'users#reactivate', as: :reactivate_user
   
 
-
+  get '/signout' => 'sessions#destroy', as: 'please_let_me_out_of_here'
   match '/home',    to: 'static_pages#home',      via: 'get'
   match '/help',    to: 'static_pages#help',      via: 'get'
   match '/about',   to: 'static_pages#about',     via: 'get'

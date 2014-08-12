@@ -1,7 +1,9 @@
-<% @shoes.each do |i| %>
-	<%= image_tag i.shoe_picture.url %>
+<ul>
+	<% @shoes.each do |u| %>
+	<li><strong> <%= u.title%></strong>
+	 <%= link_to "Show details", shoe_path(u) %>
+	</li>
+	<% end %>
+</ul>
+<%= link_to "Create a new user", new_user_path %>
 
-<% end %>
-
-
- 

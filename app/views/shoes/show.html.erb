@@ -1,0 +1,13 @@
+<%= link_to "Back to Shoes", shoes_path %>
+<h1><%= @shoe.title %></h1>
+<p>Title: <%= @shoe.title %></p>
+<p>Model: <%= @shoe.model %></p>
+<p>Colorway: <%= @shoe.style_code %></p>
+<p>Year: <%= @shoe.release_year %></p>
+<p>Description: <%= @shoe.description %></p>
+<p><%= image_tag @shoe.shoe_picture.url%></p>
+
+
+<%= link_to "Delete User", :shoe, method: :delete, data: {
+	confirm: "Are you sure you want to delete #{@shoe.title}?"
+}%> 

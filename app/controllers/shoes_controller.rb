@@ -69,9 +69,9 @@ class ShoesController < ApplicationController
   # end
  
   
-  # def show
-  # 	@shoe = Shoe.find(params[:id])
-  # end
+  def show
+  	@shoe = Shoe.find(params[:id])
+  end
 # 
   def new
     @shoe = Shoe.new
@@ -87,6 +87,8 @@ class ShoesController < ApplicationController
     end
   end
   
+  def add_shoe_to_profile
+  end
   
  
   # def edit
@@ -102,9 +104,8 @@ class ShoesController < ApplicationController
   #   end
   # end
 
-  # def destroy
-  #   @shoe = Shoe.find(params[:id])
-  #   @shoe.destroy
-  #   redirect_to users_path
-  # end
+  def destroy
+    @shoe = Shoe.find(params[:id]).destroy
+    redirect_to shoes_path
+  end
 end

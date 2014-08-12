@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   
   def index
   	@users = User.all
-    @users = User.where(is_active: true)
+    # @users = User.where(is_active: true)
+  @user.shoe.find_by
   end
 
   def show
@@ -13,13 +14,15 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  
     # you do not need the at because its not rendered
   def create
     @user = User.new(params.require(:user).permit(:name, :email, :password, :password_confirmation))
     if @user.save
+    session[:user_id] = @user.id.to_s
       redirect_to users_path
-    else 
-      render 'new'
+    # else 
+    #   render 'new'
     end
   end
 
