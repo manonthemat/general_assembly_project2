@@ -16,13 +16,14 @@ class Shoe
   
   search_in :title, :model, :colorway, :style_code, :release_year, :description
 
+  embedded_in :user
  
   def self.search(search)
-      if search
-        find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
-      end
+    if search
+      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
     end
-      has_and_belongs_to_many :users
-
+  end
+  
+  
 end
 

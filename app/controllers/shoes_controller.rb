@@ -2,6 +2,7 @@ class ShoesController < ApplicationController
 
   def index
     @shoes = Shoe.all
+    @user = User.new
   end
 
   def search

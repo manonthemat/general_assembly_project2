@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 		if u && u.authenticate(params[:user][:password])
 			# sets the cookie to the browser
 			da_session = session[:user_id] = u.id.to_s
-			redirect_to shoes_path
+			redirect_to users_path
 			puts "DEBUGGIN!!!"
 			puts "***********************************************************"
 			puts "da session: " + da_session
@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
 		puts "Do we have a session???"
 		puts session
 		reset_session
-		redirect_to shoes_path
+		redirect_to users_path
 		puts "DEBUGGIN!!!"
 		puts "***********************************************************"
 		puts "The session: #{session[:user_id]}"

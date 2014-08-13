@@ -4,23 +4,27 @@ class UsersController < ApplicationController
   	# @users = User.all
     @users = User.where(is_active: true)
     @shoes = Shoe.all
-    
-
+    @user = User.new
    
   end
 
   def add_shoe
     u = current_user
-    puts("DEBUGGING!!!")
-    puts(u)
-    u.shoes << Shoe.find(params[:shoe])
-    
+    # u.update(shoes: Shoe.find(params[:shoe])) 
+    # u.save
+    u.shoes << Shoe.find(params[:shoe]) 
     redirect_to user_path(u)
+    puts u.shoes
+    puts "DEBUGGING"
+
+  end
+
+  def edit_user_shoe
+
   end
 
   def show
   	@user = User.find(params[:id])
-    #@shoe = Shoe.find(params[:id])
   end
 
   def new

@@ -3,6 +3,8 @@
 <p>Email: <%= @user.email %></p>
 
 <%=link_to "Edit User", edit_user_path %>
+<%=link_to "Back to Shoes", shoes_path %>
+
 
 <%= link_to "Delete User", :user, method: :delete, data: {
 	confirm: "Are you sure you want to delete #{@user.name}?"
@@ -11,6 +13,11 @@
 
 <%= link_to "Back to users", users_path %>
 
-<%= @user.shoes.each do |shoe| %>
+<% @user.shoes.each do |shoe| %>
 	<%= shoe.title %><br/>
+	<%= shoe.model %> <br/>
+	<%= shoe.style_code %><br/>
+	<%= shoe.release_year %><br/>
+	<%= shoe.description %><br/>
+	<%= image_tag shoe.shoe_picture.url%><br/>
 <% end %>
