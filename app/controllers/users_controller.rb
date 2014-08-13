@@ -1,18 +1,20 @@
 class UsersController < ApplicationController
-  
+
   def index
   	# @users = User.all
     @users = User.where(is_active: true)
     @shoes = Shoe.all
     @user = User.new
-   
   end
 
   def add_shoe
     u = current_user
-    # u.update(shoes: Shoe.find(params[:shoe])) 
-    # u.save
-    u.shoes << Shoe.find(params[:shoe]) 
+    original_shoe = Shoe.find(params[:shoe])
+    u.shoes << Shoe.new
+    original_shoe.attributes.each do |k, v|
+      u.shoes.last.update({"#{k}" => v}) if k != "_id"
+    end
+    u.save
     redirect_to user_path(u)
     puts u.shoes
     puts "DEBUGGING"
