@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     original_shoe = Shoe.find(params[:shoe])
     u.shoes << Shoe.new
     original_shoe.attributes.each do |k, v|
-      u.shoes.last.update({"#{k}" => v}) if k != "_id"
+      u.shoes.last.update({"#{k}" => v})
     end
     u.save
     redirect_to user_path(u)
