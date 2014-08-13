@@ -19,7 +19,7 @@ class User
 
   validates :password, length: { minimum: 6}
 
-  embeds_many :shoes
+  has_many :shoes
   accepts_nested_attributes_for :shoes
 end
 

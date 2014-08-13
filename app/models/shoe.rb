@@ -16,7 +16,7 @@ class Shoe
   
   search_in :title, :model, :colorway, :style_code, :release_year, :description
 
-  embedded_in :user
+  belongs_to :user
  
   def self.search(search)
     if search
