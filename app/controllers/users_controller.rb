@@ -1,13 +1,26 @@
 class UsersController < ApplicationController
   
   def index
-  	@users = User.all
-    # @users = User.where(is_active: true)
-  @user.shoe.find_by
+  	# @users = User.all
+    @users = User.where(is_active: true)
+    @shoes = Shoe.all
+    
+
+   
+  end
+
+  def add_shoe
+    u = current_user
+    puts("DEBUGGING!!!")
+    puts(u)
+    u.shoes << Shoe.find(params[:shoe])
+    
+    redirect_to user_path(u)
   end
 
   def show
   	@user = User.find(params[:id])
+    #@shoe = Shoe.find(params[:id])
   end
 
   def new
@@ -21,8 +34,8 @@ class UsersController < ApplicationController
     if @user.save
     session[:user_id] = @user.id.to_s
       redirect_to users_path
-    # else 
-    #   render 'new'
+    else 
+      render 'new'
     end
   end
 
@@ -36,6 +49,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if current_user != @user
       if current_user
+        flash[:success] = "Profile Updated"
         redirect_to user_path(current_user)
       else 
         redirect_to new_session_path
@@ -54,12 +68,16 @@ class UsersController < ApplicationController
 
     redirect_to users_path
   end
+
+
   def reactivate 
     @user = User.find(params[:id])
   end
   
   private
-  def pic_params
-    params.require(:image).permit(:pic)
-  end
+    def pic_params
+      params.require(:image).permit(:pic)
+    end
+
+
 end

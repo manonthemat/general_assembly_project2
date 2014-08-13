@@ -7,7 +7,7 @@ class User
   field :name, type: String
   field :email, type: String
   field :password_digest, type: String
-  # field :is_active, type: Mongoid::Boolean, default: true
+  field :is_active, type: Mongoid::Boolean, default: true
   # add_index :users, :email, unique: true
 
   validates :name, presence: true, length: { maximum: 50}
@@ -19,7 +19,7 @@ class User
 
   validates :password, length: { minimum: 6}
 
-  has_many :shoes
+  has_and_belongs_to_many :shoes
 end
 
 

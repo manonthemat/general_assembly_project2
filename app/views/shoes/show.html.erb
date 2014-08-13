@@ -11,3 +11,7 @@
 <%= link_to "Delete User", :shoe, method: :delete, data: {
 	confirm: "Are you sure you want to delete #{@shoe.title}?"
 }%> 
+
+<%= link_to "Back to users", users_path %>
+
+<%= link_to "Add Shoe", add_shoe_path(@shoe) %>

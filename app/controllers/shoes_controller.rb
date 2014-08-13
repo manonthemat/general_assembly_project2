@@ -8,7 +8,48 @@ class ShoesController < ApplicationController
      @shoes = Shoe.where( _keywords: params[:search])
   end
 
-  	# @shoes = Shoe.search(params[:search])
+  def show
+  	@shoe = Shoe.find(params[:id])
+  end
+
+  def new
+    @shoe = Shoe.new
+  end
+
+    # you do not need the at because its not rendered
+  def create
+    @shoe = Shoe.new(params.require(:shoe).permit(:title, :model, :colorway, :style_code, :release_year, :description, :shoe_picture))
+    if @shoe.save
+      redirect_to shoes_path
+    else 
+      render 'new'
+    end
+  end
+  
+  def add_shoe_to_profile
+  end
+  
+ 
+  # def edit
+  #   @shoe = Shoe.find(params[:id])
+  # end
+
+  # def update
+  #   @shoe = shoe.find(params[:id])
+  #   if @shoe.update_attributes(params.require(:shoe).permit(:title, :model, :colorway, :style_code, :release_year, :description))
+  #     redirect_to shoes_path
+  #   else
+  #     render 'edit'
+  #   end
+  # end
+
+  def destroy
+    @shoe = Shoe.find(params[:id]).destroy
+    redirect_to shoes_path
+  end
+end
+
+    # @shoes = Shoe.search(params[:search])
   
    #    base_url = "http://www.kicksonfire.com"
    #    list_url = "#{base_url}/rare-kicks/" 
@@ -68,44 +109,3 @@ class ShoesController < ApplicationController
    #  end
   # end
  
-  
-  def show
-  	@shoe = Shoe.find(params[:id])
-  end
-# 
-  def new
-    @shoe = Shoe.new
-  end
-
-    # you do not need the at because its not rendered
-  def create
-    @shoe = Shoe.new(params.require(:shoe).permit(:title, :model, :colorway, :style_code, :release_year, :description, :shoe_picture))
-    if @shoe.save
-      redirect_to shoes_path
-    else 
-      render 'new'
-    end
-  end
-  
-  def add_shoe_to_profile
-  end
-  
- 
-  # def edit
-  #   @shoe = Shoe.find(params[:id])
-  # end
-
-  # def update
-  #   @shoe = shoe.find(params[:id])
-  #   if @shoe.update_attributes(params.require(:shoe).permit(:title, :model, :colorway, :style_code, :release_year, :description))
-  #     redirect_to shoes_path
-  #   else
-  #     render 'edit'
-  #   end
-  # end
-
-  def destroy
-    @shoe = Shoe.find(params[:id]).destroy
-    redirect_to shoes_path
-  end
-end

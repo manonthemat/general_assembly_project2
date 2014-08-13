@@ -2,10 +2,21 @@
 
 <ul>
 	<% @users.each do |u| %>
-	<li><strong> <%= u.name %></strong>
-		<%= u.email %> <%= link_to "Show details", user_path(u) %>
+		<li><strong> <%= u.name%></strong>
+		 	<%= link_to "Show details", user_path(u) %>
+		</li>
+	<% end %>
+</ul>
+
+<%= link_to "Create a new user", new_user_path %>
+
+
+<ul>
+	<% @shoes.each do |u| %>
+	<li><strong> <%= u.title%></strong>
+	 <%= link_to "Show details", shoe_path(u) %>
 	</li>
 	<% end %>
 </ul>
-<%= link_to "Create a new user", new_user_path %>
+<%= link_to "Create a new shoe", new_user_path %>
 
